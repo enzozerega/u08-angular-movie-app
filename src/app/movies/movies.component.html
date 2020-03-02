@@ -1,0 +1,5 @@
+<ul class="movies">
+    <li *ngFor="let movie of movies" [class.selected]="movie === selectedMovie" (click)="onSelect(movie)">
+        <span>{{movie.id}}</span> {{movie.name}}
+  </li>
+</ul>

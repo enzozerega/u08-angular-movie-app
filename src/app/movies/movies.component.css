@@ -1,0 +1,10 @@
+.movies li.selected {
+    background-color: aquamarine;
+}
+
+.movies li.selected:hover {
+    background-color: aquamarine;
+}
+.movies li:hover {
+    background-color: royalblue;
+}
