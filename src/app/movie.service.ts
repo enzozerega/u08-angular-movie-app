@@ -12,16 +12,16 @@ import { MessageService } from './message.service';
 export class MovieService {
   private moviesUrl = 'api/movies';  // URL to web api
 
-private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T> (operation = 'operation', result?: T) {
 
-  return (error: any): Observable<T> => {
+    return (error: any): Observable<T> => {
 
-    console.error(error);
-    this.log(`${operation} failed: ${error.message}`);
-    return of(result as T);
+      console.error(error);
+      this.log(`${operation} failed: ${error.message}`);
+      return of(result as T);
 
-  };
-}
+    };
+  }
 
   getMovies(): Observable<Movie[]> {
     return this.http.get<Movie[]>(this.moviesUrl)
@@ -42,6 +42,19 @@ private handleError<T> (operation = 'operation', result?: T) {
   private log(message: string) {
     this.messageService.add(`MovieService: ${message}`);
   }
+
+  searchMovies(term: string): Observable<Movie[]> {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get<Movie[]>(`${this.moviesUrl}/?name=${term}`).pipe(
+      tap(x => x.length ?
+         this.log(`found movies matching "${term}"`) :
+         this.log(`no movies matching "${term}"`)),
+      catchError(this.handleError<Movie[]>('searchHeroes', []))
+    );
+  }
+
   constructor(
     private messageService: MessageService,
     private http: HttpClient
