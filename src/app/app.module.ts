@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
+import { WatchingListComponent } from './watching-list/watching-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
     MoviesComponent,
-    MovieDetailComponent
+    MovieDetailComponent,
+    WatchingListComponent
   ],
   imports: [
     BrowserModule,

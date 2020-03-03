@@ -1,5 +1,7 @@
 <ul class="movies">
-    <li *ngFor="let movie of movies" [class.selected]="movie === selectedMovie" (click)="onSelect(movie)">
-        <span>{{movie.id}}</span> {{movie.name}}
+    <li *ngFor="let movie of movies">
+        <a routerLink="/movie/detail/{{movie.id}}">
+          <span>{{movie.id}}</span> {{movie.name}}
+        </a>
   </li>
 </ul>

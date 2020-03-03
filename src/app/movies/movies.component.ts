@@ -18,13 +18,6 @@ export class MoviesComponent implements OnInit {
     this.getMovies();
   }
 
-  selectedMovie: Movie;
-  onSelect(movie: Movie): void {
-
-    this.selectedMovie = movie;
-
-  }
-
   getMovies(): void {
     this.movieService.getMovies().subscribe(movies => this.movies = movies);
   }
