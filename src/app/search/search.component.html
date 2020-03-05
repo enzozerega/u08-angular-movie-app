@@ -5,22 +5,21 @@
   
     <ul class="search-result">
       <li *ngFor="let movie of movies$ | async" >
-        <div (click)="onSelect(movie)">
-          <span>{{movie.name}} </span>
-          <span>{{movie.year}} </span>
-          <span>{{movie.director}} </span>
-          <img src="{{ movie.poster }}" alt=""/>
+        <button class="accordion" (click)="onSelect(movie)">
+          {{movie.name}}
+          <span> Year: {{movie.year}} </span>
+          <span>Directed by: {{movie.director}}</span>
+        </button>
+        <div class="panel" *ngIf="selectedMovie == movie">
+          <h2>{{ movie.name }}</h2>
+          <h3>{{movie.name}}</h3>
+          <p>Original name: ?</p>
+          <p>Realease date: {{movie.year}}</p>
+          <p>Directed by: {{movie.director}}</p>
+          <img src="{{ movie.poster }}" alt="{{movie.name}}"/>
           <a href="/movie/detail/{{ movie.id }}" target="_blank"> More details</a>
-        </div>
-        
+        </div>   
       </li>
     </ul>
 </div>
-<div *ngIf="selectedMovie">
-  <h2>{{ selectedMovie.name }}</h2>
-  <ul>
-      <li>{{ selectedMovie.director }}</li>
-      <li>{{ selectedMovie.year }}</li>
-      <li><img src="{{ selectedMovie.poster }}" alt=""/></li>
-  </ul>
-</div>
+

@@ -29,11 +29,14 @@ export class SearchComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((term: string) => this.movieService.searchMovies(term)),
     );
+    
   }
 
   selectedMovie: Movie;
   onSelect(movie: Movie): void {
     this.selectedMovie = movie;
   }
+
+
 
 }
