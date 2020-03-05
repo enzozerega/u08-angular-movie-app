@@ -1,7 +1,14 @@
 <ul class="movies">
     <li *ngFor="let movie of movies">
-        <a routerLink="/movie/detail/{{movie.id}}">
-          <span>{{movie.id}}</span> {{movie.name}}
-        </a>
+      <span (click)="onSelect(movie)">{{movie.id}} {{movie.name}} </span>
+      <a href="/movie/detail/{{movie.id}}" target="_blank">More details</a>
   </li>
 </ul>
+<div *ngIf="selectedMovie">
+  <h2>{{ selectedMovie.name }}</h2>
+  <ul>
+      <li>{{ selectedMovie.director }}</li>
+      <li>{{ selectedMovie.year }}</li>
+      <li><img src="{{ selectedMovie.poster }}" alt=""/></li>
+  </ul>
+</div>

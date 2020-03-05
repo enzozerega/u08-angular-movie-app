@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import {
-  debounceTime, distinctUntilChanged, switchMap
-} from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
 import { Movie } from '../movie';
 import { MovieService } from '../movie.service';
@@ -31,6 +29,11 @@ export class SearchComponent implements OnInit {
       distinctUntilChanged(),
       switchMap((term: string) => this.movieService.searchMovies(term)),
     );
+  }
+
+  selectedMovie: Movie;
+  onSelect(movie: Movie): void {
+    this.selectedMovie = movie;
   }
 
 }

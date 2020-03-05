@@ -7,9 +7,10 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 const routes: Routes = [
 
+  { path: 'movie/detail/:id', component: MovieDetailComponent },
   { path: 'discover', component: MoviesComponent },
-  { path: 'mylist', component: WatchingListComponent },
-  { path: 'movie/detail/:id', component: MovieDetailComponent }
+  { path: 'mylist', component: WatchingListComponent }
+
 
 ];
 

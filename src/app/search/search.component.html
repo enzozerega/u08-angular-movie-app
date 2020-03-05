@@ -5,9 +5,22 @@
   
     <ul class="search-result">
       <li *ngFor="let movie of movies$ | async" >
-        <a routerLink="/movie/detail/{{movie.id}}">
-          {{movie.name}}
-        </a>
+        <div (click)="onSelect(movie)">
+          <span>{{movie.name}} </span>
+          <span>{{movie.year}} </span>
+          <span>{{movie.director}} </span>
+          <img src="{{ movie.poster }}" alt=""/>
+          <a href="/movie/detail/{{ movie.id }}" target="_blank"> More details</a>
+        </div>
+        
       </li>
     </ul>
-  </div>
+</div>
+<div *ngIf="selectedMovie">
+  <h2>{{ selectedMovie.name }}</h2>
+  <ul>
+      <li>{{ selectedMovie.director }}</li>
+      <li>{{ selectedMovie.year }}</li>
+      <li><img src="{{ selectedMovie.poster }}" alt=""/></li>
+  </ul>
+</div>
