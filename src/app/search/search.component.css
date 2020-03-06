@@ -19,6 +19,14 @@
     animation: slide-down 0.4s;
   }
 
+  .hidden {
+    display: none;
+  }
+
+  .nothiden {
+    display: block;
+  }
+
   @keyframes slide-down {
     0% {
         opacity: 0;
