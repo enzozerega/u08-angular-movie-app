@@ -1,4 +1,6 @@
+<!---
 <input #searchBox id="search-box" (input)="search(searchBox.value)" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
+-->
 <accordion [closeOthers]="oneAtATime" [isAnimated]="true">
   <accordion-group *ngFor="let movie of movies$ | async" heading="{{ movie.name }} ({{ movie.year }})">
     <div class="movie-results">

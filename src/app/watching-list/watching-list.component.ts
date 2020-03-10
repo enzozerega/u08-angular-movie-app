@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
+import { Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { Movies } from '../movie-detail';
+
 
 @Component({
   selector: 'app-watching-list',
@@ -7,9 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WatchingListComponent implements OnInit {
 
-  constructor() { }
+  movies: Object;
+
+
+  constructor(
+    private httpService: HttpService
+  ) { }
 
   ngOnInit(): void {
+    this.httpService.sendGetRequest().subscribe(
+      resp => {
+        console.log(resp);
+        this.movies = resp['results'];
+        console.log(this.movies);
+      }
+
+    );
+
+
   }
 
 }

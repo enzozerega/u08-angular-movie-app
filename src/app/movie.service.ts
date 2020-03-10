@@ -4,59 +4,33 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Movie } from './movie';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MovieService {
-  private moviesUrl = 'api/movies';  // URL to web api
-
-  private handleError<T> (operation = 'operation', result?: T) {
-
-    return (error: any): Observable<T> => {
-
-      console.error(error);
-      this.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-
-    };
-  }
-
-  getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.moviesUrl)
-    .pipe(
-      tap(_ => this.log('fetched heroes')),
-      catchError(this.handleError<Movie[]>('getMovies', []))
-    );
-  }
-
-  getMovie(id: number): Observable<Movie> {
-    const url = `${this.moviesUrl}/${id}`;
-    return this.http.get<Movie>(url).pipe(
-      tap(_ => this.log(`fetched movie id=${id}`)),
-      catchError(this.handleError<Movie>(`getMovie id=${id}`))
-    );
-  }
   
-  private log(message: string) {
-    this.messageService.add(`MovieService: ${message}`);
-  }
+  private moviesUrl = 'https://api.themoviedb.org/3/search/movie?api_key=50fc7d27f2db06b1ae8c54a7c435f8e1&language=en-US&page=1&include_adult=false';  // URL to web api
+
+  constructor(
+    private http: HttpClient
+  ) { }
 
   searchMovies(term: string): Observable<Movie[]> {
     if (!term.trim()) {
       return of([]);
     }
-    return this.http.get<Movie[]>(`${this.moviesUrl}/?name=${term}`).pipe(
-      tap(x => x.length ?
-         this.log(`found movies matching "${term}"`) :
-         this.log(`no movies matching "${term}"`)),
-      catchError(this.handleError<Movie[]>('searchHeroes', []))
-    );
+    return this.http.get<Movie[]>(`${this.moviesUrl}&query=${term}`);
   }
 
-  constructor(
-    private messageService: MessageService,
-    private http: HttpClient
-  ) { }
+  getMovies(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(this.moviesUrl)
+  }
+
+  getMovie(id: number): Observable<Movie> {
+    const url = `${this.moviesUrl}/${id}`;
+    return this.http.get<Movie>(url)
+  }
+  
 }
