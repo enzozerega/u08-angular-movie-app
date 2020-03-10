@@ -12,7 +12,7 @@ import { MovieService } from '../movie.service';
 })
 export class SearchComponent implements OnInit {
 
-  clickCounter: number = 0;
+  oneAtATime: boolean = true;
   movies$: Observable<Movie[]>;
   private searchTerms = new Subject<string>();
   
@@ -31,24 +31,6 @@ export class SearchComponent implements OnInit {
       switchMap((term: string) => this.movieService.searchMovies(term)),
       
     );
-  }
-
-  selectedMovie: Movie;
-  onSelect(movie: Movie): void {
-    this.selectedMovie = movie;
-    
-  }
-
-  countClick() {
-    this.clickCounter += 1;
-  }
-  
-  setClasses() {
-    let myClasses = {
-      hidden: this.clickCounter % 2 == 0,
-      nothidden: this.clickCounter % 2 != 0
-    }
-    return myClasses;
   }
 
 }

@@ -5,6 +5,12 @@ import { HttpClientModule }    from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -12,6 +18,7 @@ import { MoviesComponent } from './movies/movies.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { WatchingListComponent } from './watching-list/watching-list.component';
 import { MessagesComponent } from './messages/messages.component';
+import { SearchResultsComponent } from './search/search-results/search-results.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +27,8 @@ import { MessagesComponent } from './messages/messages.component';
     MoviesComponent,
     MovieDetailComponent,
     WatchingListComponent,
-    MessagesComponent
+    MessagesComponent,
+    SearchResultsComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,9 +37,16 @@ import { MessagesComponent } from './messages/messages.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    BrowserModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
+    BrowserAnimationsModule,
+    AccordionModule.forRoot()
   ],
-  providers: [],
+  providers: [SearchComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export class AppBootstrapModule {}
