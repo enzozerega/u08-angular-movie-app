@@ -1,0 +1,27 @@
+<div id="search-component">
+    <h4><label for="search-box">Movie Search</label></h4>
+  
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  
+    <ul class="search-result">
+      <li *ngFor="let movie of movies$ | async" >
+        <button class="accordion" (click)="countClick(); onSelect(movie)">
+          {{movie.name}}
+          <span> Year: {{movie.year}} </span>
+          <span>Directed by: {{movie.director}}</span>
+        </button>
+        <div class="panel" *ngIf="selectedMovie == movie">
+          <div [ngClass]="setClasses()">
+            <h2>{{ movie.name }}</h2>
+            <h3>{{movie.name}}</h3>
+            <p>Original name: ?</p>
+            <p>Realease date: {{movie.year}}</p>
+            <p>Directed by: {{movie.director}}</p>
+            <img src="{{ movie.poster }}" alt="{{movie.name}}"/>
+            <a href="/movie/detail/{{ movie.id }}" target="_blank"> More details</a>
+          </div>
+        </div>   
+      </li>
+    </ul>
+</div>
+
