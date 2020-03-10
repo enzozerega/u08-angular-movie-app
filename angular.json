@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "u09-angular-movie-app": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "u09-angular-movie-app"
+    }
+  },
+  "defaultProject": "u09-angular-movie-app",
+  "cli": {
+    "analytics": "bc0c6571-c3a6-4054-b241-38ca7d9e9961"
+  }
 }
