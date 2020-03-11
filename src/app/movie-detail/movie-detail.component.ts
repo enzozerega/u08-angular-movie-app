@@ -31,20 +31,14 @@ export class MovieDetailComponent implements OnInit {
       .subscribe(
         resp => {
           this.movie = resp;
-          console.log(this.movie);
-          let crew = resp['credits']['crew'];
-          console.log(crew);
-
           let directors = [];
-          for (let i = 0, len = crew.length; i < len; i++) {
-            if (crew[i]['job'] == 'Director') {
-            directors.push(crew[i]['name']);
+          for (let i = 0, len = resp['credits']['crew'].length; i < len; i++) {
+            if (resp['credits']['crew'][i]['job'] == 'Director') {
+            directors.push(resp['credits']['crew'][i]['name']);
             }
           }
           
-          this.directors = directors.join(', ');;
-          console.log(`Directors:${directors}`)
-  
+          this.directors = directors.join(', ');;  
           }
         );
 
