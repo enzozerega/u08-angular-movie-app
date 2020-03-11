@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 
-import { Movie } from '../movie';
 import { MovieService } from '../movie.service';
+
 
 @Component({
   selector: 'app-movie-detail',
@@ -11,12 +10,11 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./movie-detail.component.scss']
 })
 export class MovieDetailComponent implements OnInit {
-  movie: Movie;
+  movie;
 
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService,
-    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -24,11 +22,32 @@ export class MovieDetailComponent implements OnInit {
     
   }
 
+  directors: string;
+
   getMovie(): void {
     
     const id = +this.route.snapshot.paramMap.get('id');
     this.movieService.getMovie(id)
-      .subscribe(movie => this.movie = movie);
+      .subscribe(
+        resp => {
+          this.movie = resp;
+          console.log(this.movie);
+          let crew = resp['credits']['crew'];
+          console.log(crew);
+
+          let directors = [];
+          for (let i = 0, len = crew.length; i < len; i++) {
+            if (crew[i]['job'] == 'Director') {
+            directors.push(crew[i]['name']);
+            }
+          }
+          
+          this.directors = directors.join(', ');;
+          console.log(`Directors:${directors}`)
+  
+          }
+        );
+
   }
 
 }

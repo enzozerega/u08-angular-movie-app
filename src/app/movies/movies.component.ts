@@ -17,12 +17,12 @@ export class MoviesComponent implements OnInit {
     private movieService: MovieService, private messageService: MessageService) { }
 
   ngOnInit(): void {
-    this.getMovies();
+    //this.getMovies();
   }
 
-  getMovies(): void {
-    this.movieService.getMovies().subscribe(movies => this.movies = movies);
-  }
+  //getMovies(): void {
+    //this.movieService.getMovies().subscribe(movies => this.movies = movies);
+  //}
 
   selectedMovie: Movie;
   onSelect(movie: Movie): void {
