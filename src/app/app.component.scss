@@ -1,3 +1,19 @@
 .selected {
-    background-color: lightgray !important;
+    background-color: darkcyan !important;
+    color: white !important;
+}
+.footer {
+    height: 100px;
+}
+h1 {
+    margin: 60px 10% 0 10%;
+    font-size: 26px;
+    background-color: darkslateblue;
+    color: white;
+    width: max-content;
+
+    @media (max-width: 450px) {
+        width: min-content;
+        margin-left: 35%;
+    }
 }

@@ -22,3 +22,55 @@
     margin: 0 50px;
 }
 
+.search-container {
+    margin: 20px 10%;
+    margin-bottom: 0;
+}
+
+#search-box {
+    background: none;
+    width: 100%;
+    border: 3px solid white; 
+    padding: 8px 12px;
+    &:focus {
+        border: 3px solid turquoise;
+    }
+    &:focus + label {
+        color: turquoise; 
+    }
+  }
+
+*:focus {
+    outline: none;
+}
+
+label {
+    color:white;
+    font-weight: bolder;
+    width: 100%;
+    transition: 0.2s;
+  }
+
+.myBox {
+margin: 0 10%;
+}
+
+accordion-group * {
+    margin: 5px !important;
+}
+
+.more-details {
+    color:white;
+    background-color: darkcyan;
+    padding: 0 5px;
+    height: min-content;
+}
+
+.movie-result-overview {
+    text-align: justify;
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+  }

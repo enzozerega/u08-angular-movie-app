@@ -3,6 +3,6 @@
   <li class="movie-box" *ngFor="let movie of popular">
     <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ movie.poster_path }}"/>
     <div class="movie-result-title">{{movie.title}}</div>
-    <p class="movie-result-info">{{movie.overview}}<a class="more-details" href="/movie/detail/{{ movie.id }}" target="_blank"> More details</a></p>
+    <p class="movie-result-info">{{movie.overview}}<br><a class="more-details" href="/movie/detail/{{ movie.id }}" target="_blank">More details</a></p>
   </li>
 </ul>

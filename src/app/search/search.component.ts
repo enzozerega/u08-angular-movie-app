@@ -44,4 +44,15 @@ export class SearchComponent implements OnInit {
         }
         );
   }
+
+  showBox = true;
+  onClickedInside(e: Event) {
+    this.showBox = true;
+  }
+
+  onClickedOutside(e: Event) {
+    this.showBox = false;
+  }
+
+
 }
