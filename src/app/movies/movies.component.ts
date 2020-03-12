@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Movie } from '../movie';
 import { MovieService } from '../movie.service';
-import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-movies',
@@ -11,22 +9,26 @@ import { MessageService } from '../message.service';
 })
 export class MoviesComponent implements OnInit {
 
-  movies : Movie[];
+  popular: Object;
 
   constructor(
-    private movieService: MovieService, private messageService: MessageService) { }
+    private movieService: MovieService
+    ) { }
 
   ngOnInit(): void {
-    this.getMovies();
+    this.getPopularMovies();
   }
 
-  getMovies(): void {
-    this.movieService.getMovies().subscribe(movies => this.movies = movies);
+  getPopularMovies(): void {
+    this.movieService.getPopularMovies()
+    .subscribe(
+      resp => {
+        this.popular = resp['results'];
+        console.log(this.popular);
+
+    });
   }
 
-  selectedMovie: Movie;
-  onSelect(movie: Movie): void {
-    this.selectedMovie = movie;
-  }
+
 
 }

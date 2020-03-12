@@ -1,0 +1,8 @@
+<div class="movie-details-container" *ngIf="person">
+    <h2>{{ person.name }}</h2>
+    <div *ngIf="person.gender == 1">Actress</div>
+    <div *ngIf="person.gender == 2">Actor</div>
+    <img class="poster" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ person.profile_path }}" alt=""/>
+    <p class="movie-result-info">Birthday: {{ person.birthday }}<br><span *ngIf="person.deathday != null">Deathday: {{ person.deathday }}</span>Place of birth: {{ person.place_of_birth }}</p>
+    <p>{{ person.biography }}</p>
+</div>

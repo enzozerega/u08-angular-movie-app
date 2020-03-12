@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
-import { Movie } from '../movie';
+
 import { MovieService } from '../movie.service';
 
 @Component({
@@ -13,7 +13,8 @@ import { MovieService } from '../movie.service';
 export class SearchComponent implements OnInit {
 
   oneAtATime: boolean = true;
-  movies$: Observable<Movie[]>;
+  movies: Object;
+  persons: Object;
   private searchTerms = new Subject<string>();
   
   constructor(
@@ -25,12 +26,22 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.movies$ = this.searchTerms.pipe(
-      debounceTime(300),
+      this.searchTerms.pipe(
+      debounceTime(400),
       distinctUntilChanged(),
-      switchMap((term: string) => this.movieService.searchMovies(term)),
+      switchMap((term: string) => this.movieService.searchMovies(term))).subscribe( resp => {
+        this.movies = resp['results'];
+        console.log('movies: ',this.movies);
+      }
+      );
       
-    );
+      this.searchTerms.pipe(
+        debounceTime(400),
+        distinctUntilChanged(),
+        switchMap((term: string) => this.movieService.searchPersons(term))).subscribe( resp => {
+          this.persons = resp['results'];
+          console.log('persons: ', this.persons);
+        }
+        );
   }
-
 }

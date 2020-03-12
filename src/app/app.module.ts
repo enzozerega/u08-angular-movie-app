@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule }    from '@angular/common/http';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
@@ -19,6 +18,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { WatchingListComponent } from './watching-list/watching-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { SearchResultsComponent } from './search/search-results/search-results.component';
+import { PersonDetailComponent } from './person-detail/person-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,15 +29,13 @@ import { SearchResultsComponent } from './search/search-results/search-results.c
     WatchingListComponent,
     MessagesComponent,
     SearchResultsComponent,
+    PersonDetailComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
     BrowserModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),

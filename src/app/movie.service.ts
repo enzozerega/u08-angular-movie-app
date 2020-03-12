@@ -4,59 +4,50 @@ import { catchError, map, tap } from 'rxjs/operators';
 
 import { Movie } from './movie';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class MovieService {
-  private moviesUrl = 'api/movies';  // URL to web api
-
-  private handleError<T> (operation = 'operation', result?: T) {
-
-    return (error: any): Observable<T> => {
-
-      console.error(error);
-      this.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-
-    };
-  }
-
-  getMovies(): Observable<Movie[]> {
-    return this.http.get<Movie[]>(this.moviesUrl)
-    .pipe(
-      tap(_ => this.log('fetched heroes')),
-      catchError(this.handleError<Movie[]>('getMovies', []))
-    );
-  }
-
-  getMovie(id: number): Observable<Movie> {
-    const url = `${this.moviesUrl}/${id}`;
-    return this.http.get<Movie>(url).pipe(
-      tap(_ => this.log(`fetched movie id=${id}`)),
-      catchError(this.handleError<Movie>(`getMovie id=${id}`))
-    );
-  }
   
-  private log(message: string) {
-    this.messageService.add(`MovieService: ${message}`);
-  }
+  private searchUrl = 'https://api.themoviedb.org/3/search/movie?api_key=50fc7d27f2db06b1ae8c54a7c435f8e1&language=en-US&page=1&include_adult=false';
+  private detailsUrl = 'https://api.themoviedb.org/3/movie/?api_key=50fc7d27f2db06b1ae8c54a7c435f8e1&append_to_response=credits';
+  private searchPerson = 'https://api.themoviedb.org/3/search/person?api_key=50fc7d27f2db06b1ae8c54a7c435f8e1&language=en-US&page=1&include_adult=false';
+  private personsDetails = 'https://api.themoviedb.org/3/person/?api_key=50fc7d27f2db06b1ae8c54a7c435f8e1&language=en-US';
+  private popularUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=50fc7d27f2db06b1ae8c54a7c435f8e1&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2020';
 
-  searchMovies(term: string): Observable<Movie[]> {
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  searchMovies(term: string) {
     if (!term.trim()) {
       return of([]);
     }
-    return this.http.get<Movie[]>(`${this.moviesUrl}/?name=${term}`).pipe(
-      tap(x => x.length ?
-         this.log(`found movies matching "${term}"`) :
-         this.log(`no movies matching "${term}"`)),
-      catchError(this.handleError<Movie[]>('searchHeroes', []))
-    );
+    return this.http.get(`${this.searchUrl}&query=${term}`);
+    
   }
 
-  constructor(
-    private messageService: MessageService,
-    private http: HttpClient
-  ) { }
+  searchPersons(term: string) {
+    if (!term.trim()) {
+      return of([]);
+    }
+    return this.http.get(`${this.searchPerson}&query=${term}`);
+    
+  }
+
+  getPopularMovies() {
+    return this.http.get(this.popularUrl);
+  }
+
+  getMovie(id: number) {
+    const url = `${this.detailsUrl.slice(0,35)}${id}${this.detailsUrl.slice(35)}`;
+    return this.http.get(url)
+  }
+  
+  getPerson(id: number) {
+    const url = `${this.personsDetails.slice(0,36)}${id}${this.personsDetails.slice(36)}`;
+    return this.http.get(url)
+  }
 }

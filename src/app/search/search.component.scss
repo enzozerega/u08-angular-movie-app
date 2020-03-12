@@ -1,9 +1,10 @@
-#search-box {
-
+.no-padding > * {
+    padding: 0px !important;
 }
-
 .movie-results {
     display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
 }
 
 .movie-result-title {
@@ -20,3 +21,4 @@
 .movie-result-info {
     margin: 0 50px;
 }
+
