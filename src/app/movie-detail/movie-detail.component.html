@@ -1,7 +1,10 @@
 <div class="movie-details-container" *ngIf="movie">
     <h2>{{ movie.title }}</h2>
     <img class="poster" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ movie.poster_path }}" alt=""/>
-    <div class="movie-result-title">{{movie.title}}</div>
-    <p class="movie-result-info">Original name: {{ movie.original_title }}<br>Realease date: {{ movie.release_date }}<br>Directed by: {{ directors }}</p>
+    <p class="movie-result-info">Original name: {{ movie.original_title }}<br>Realease date: {{ movie.release_date }}<br>Directed by: {{ directors }}<br>Country: {{ countries }}<br>Languages: {{ languages }}</p>
+    <p>{{ movie.overview }}</p>
+    <p>Stars: {{ movie.vote_average }}</p>
+    <p>Main Cast: {{ cast }}</p>
+
 
 </div>

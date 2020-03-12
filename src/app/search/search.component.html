@@ -2,7 +2,8 @@
 
 
 <accordion [closeOthers]="oneAtATime" [isAnimated]="true">
-  <accordion-group *ngFor="let movie of movies" heading="{{ movie.title }} ({{ movie.release_date | slice:0:4 }})" class="no-padding">
+
+  <accordion-group *ngFor="let movie of movies" heading="{{ movie.title }} ({{ movie.release_date   |  slice:0:4 }})   |   Movie">
     <div class="movie-results">
       <img class="poster" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ movie.poster_path }}" alt=""/>
       <div class="movie-result-title">{{movie.title}}</div>
@@ -10,4 +11,25 @@
       <p class="movie-result-info">{{movie.overview}}<a class="more-details" href="/movie/detail/{{ movie.id }}" target="_blank"> More details</a></p>   
     </div>
   </accordion-group>
+  <div *ngFor="let person of persons">
+    <div *ngIf="(person.known_for_department == 'Acting') && (person.gender == 1)">
+      <accordion-group heading="{{ person.name }}   |   Actress">
+        <div class="movie-results">
+          <img class="poster" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ person.profile_path }}" alt=""/>
+          <div class="movie-result-title">{{ person.name }}</div> 
+          <a class="more-details" href="/person/detail/{{ person.id }}" target="_blank"> More details</a>
+        </div>
+      </accordion-group>
+    </div>
+    <div *ngIf="(person.known_for_department == 'Acting') && (person.gender == 2)">
+      <accordion-group heading="{{ person.name }}   |   Actor">
+        <div class="movie-results">
+          <img class="poster" src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ person.profile_path }}" alt=""/>
+          <div class="movie-result-title">{{ person.name }}</div> 
+          <a class="more-details" href="/person/detail/{{ person.id }}" target="_blank"> More details</a>
+        </div>
+      </accordion-group>
+    </div>
+  </div>
+
 </accordion>

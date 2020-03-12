@@ -14,6 +14,7 @@ export class SearchComponent implements OnInit {
 
   oneAtATime: boolean = true;
   movies: Object;
+  persons: Object;
   private searchTerms = new Subject<string>();
   
   constructor(
@@ -26,13 +27,21 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
       this.searchTerms.pipe(
-      debounceTime(300),
+      debounceTime(400),
       distinctUntilChanged(),
       switchMap((term: string) => this.movieService.searchMovies(term))).subscribe( resp => {
         this.movies = resp['results'];
-        console.log(this.movies);
+        console.log('movies: ',this.movies);
       }
       );
+      
+      this.searchTerms.pipe(
+        debounceTime(400),
+        distinctUntilChanged(),
+        switchMap((term: string) => this.movieService.searchPersons(term))).subscribe( resp => {
+          this.persons = resp['results'];
+          console.log('persons: ', this.persons);
+        }
+        );
   }
-
 }

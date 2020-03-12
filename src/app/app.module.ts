@@ -18,6 +18,7 @@ import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { WatchingListComponent } from './watching-list/watching-list.component';
 import { MessagesComponent } from './messages/messages.component';
 import { SearchResultsComponent } from './search/search-results/search-results.component';
+import { PersonDetailComponent } from './person-detail/person-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SearchResultsComponent } from './search/search-results/search-results.c
     WatchingListComponent,
     MessagesComponent,
     SearchResultsComponent,
+    PersonDetailComponent,
   ],
   imports: [
     BrowserModule,
