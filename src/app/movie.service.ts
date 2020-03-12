@@ -15,6 +15,7 @@ export class MovieService {
   private detailsUrl = 'https://api.themoviedb.org/3/movie/?api_key=50fc7d27f2db06b1ae8c54a7c435f8e1&append_to_response=credits';
   private searchPerson = 'https://api.themoviedb.org/3/search/person?api_key=50fc7d27f2db06b1ae8c54a7c435f8e1&language=en-US&page=1&include_adult=false';
   private personsDetails = 'https://api.themoviedb.org/3/person/?api_key=50fc7d27f2db06b1ae8c54a7c435f8e1&language=en-US';
+  private popularUrl = 'https://api.themoviedb.org/3/discover/movie?api_key=50fc7d27f2db06b1ae8c54a7c435f8e1&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2020';
 
   constructor(
     private http: HttpClient
@@ -36,8 +37,8 @@ export class MovieService {
     
   }
 
-  getMovies() {
-    //return this.http.get();
+  getPopularMovies() {
+    return this.http.get(this.popularUrl);
   }
 
   getMovie(id: number) {

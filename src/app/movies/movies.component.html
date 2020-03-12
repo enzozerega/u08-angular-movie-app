@@ -1,14 +1,8 @@
-<ul class="movies">
-    <li *ngFor="let movie of movies">
-      <span (click)="onSelect(movie)">{{movie.id}} {{movie.name}} </span>
-      <a href="/movie/detail/{{movie.id}}" target="_blank">More details</a>
+<h1>Popular right now</h1>
+<ul class="discover-container">
+  <li class="movie-box" *ngFor="let movie of popular">
+    <img src="https://image.tmdb.org/t/p/w300_and_h450_bestv2/{{ movie.poster_path }}"/>
+    <div class="movie-result-title">{{movie.title}}</div>
+    <p class="movie-result-info">{{movie.overview}}<a class="more-details" href="/movie/detail/{{ movie.id }}" target="_blank"> More details</a></p>
   </li>
 </ul>
-<div *ngIf="selectedMovie">
-  <h2>{{ selectedMovie.name }}</h2>
-  <ul>
-      <li>{{ selectedMovie.director }}</li>
-      <li>{{ selectedMovie.year }}</li>
-      <li><img src="{{ selectedMovie.poster }}" alt=""/></li>
-  </ul>
-</div>
