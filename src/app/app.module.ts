@@ -10,6 +10,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
 
+import { ClickOutsideModule } from 'ng-click-outside';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -41,7 +43,8 @@ import { PersonDetailComponent } from './person-detail/person-detail.component';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     BrowserAnimationsModule,
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    ClickOutsideModule
   ],
   providers: [SearchComponent],
   bootstrap: [AppComponent]
