@@ -18,8 +18,7 @@ import { SearchComponent } from './search/search.component';
 import { MoviesComponent } from './movies/movies.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { WatchingListComponent } from './watching-list/watching-list.component';
-import { MessagesComponent } from './messages/messages.component';
-import { SearchResultsComponent } from './search/search-results/search-results.component';
+
 import { PersonDetailComponent } from './person-detail/person-detail.component';
 
 @NgModule({
@@ -29,8 +28,6 @@ import { PersonDetailComponent } from './person-detail/person-detail.component';
     MoviesComponent,
     MovieDetailComponent,
     WatchingListComponent,
-    MessagesComponent,
-    SearchResultsComponent,
     PersonDetailComponent,
   ],
   imports: [
