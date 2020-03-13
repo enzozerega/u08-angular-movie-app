@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 The app allows the user to:
 - Search by movies by title and actors by name
-- Click on a result to see more details about the movie or actor
+- Click on a result to see more details
 - Scroll through a list of current popular movies
 - Add movies to a watching list (data is stored in local storage)
 
