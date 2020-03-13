@@ -10,7 +10,7 @@ The app allows the user to:
 - Scroll through a list of current popular movies
 - Add movies to a watching list (data is stored in local storage)
 
-## Captures
+## Capture
 
 <img src="./src/assets/img/capture-1.png" alt="capture"/><br>
 
