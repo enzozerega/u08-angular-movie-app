@@ -5,7 +5,7 @@ This app was developed as part of my training as a web developer at Chas Academy
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
 
 The app allows the user to:
-- Search by movies by title and actors by name
+- Search movies by title and actors by name
 - Click on a result to see more details
 - Scroll through a list of current popular movies
 - Add movies to a watching list (data is stored in local storage)
