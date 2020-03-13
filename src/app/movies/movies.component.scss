@@ -36,3 +36,15 @@ h1 {
     padding: 0 5px;
     height: min-content;
 }
+
+.add-to-list {
+    color:black;
+    background-color: burlywood;
+    padding: 0 5px;
+    height: min-content;
+    margin-left: 10px;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}

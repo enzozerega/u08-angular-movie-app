@@ -1,0 +1,64 @@
+.discover-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin: 20px 10% 0 10%;
+
+    @media (max-width: 450px) {
+        margin: 20px 10px 0 10px;
+    }
+}
+
+h1 {
+    margin: 20px 10% 0 10%;
+
+}
+
+.movie-result-info, .movie-result-title {
+    text-align: justify;
+    width: 300px;
+}
+
+.movie-result-title {
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.movie-box {
+    padding: 10px;
+    list-style-type: none;
+    flex: 1;
+}
+
+.more-details {
+    color:white;
+    background-color: darkcyan;
+    padding: 0 5px;
+    height: min-content;
+}
+
+.remove-movie {
+    color:white;
+    background-color: darkred;
+    padding: 0 5px;
+    height: min-content;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.watched-movie {
+    color:black;
+    background-color: yellowgreen;
+    padding: 0 5px;
+    height: min-content;
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.watched-container {
+    opacity: 0.5;
+}

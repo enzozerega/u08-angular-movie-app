@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 
-
 import { MovieService } from '../movie.service';
+import { WatchingListService } from '../watching-list.service';
 
 @Component({
   selector: 'app-search',
@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit {
   private searchTerms = new Subject<string>();
   
   constructor(
+    private watchingListService: WatchingListService,
     private movieService: MovieService
   ) { }
 
@@ -52,6 +53,17 @@ export class SearchComponent implements OnInit {
 
   onClickedOutside(e: Event) {
     this.showBox = false;
+  }
+
+  addToList(id: number) {
+    if (JSON.parse(localStorage.getItem('myList'))) {
+      let arr = JSON.parse(localStorage.getItem('myList'));
+      arr.push(id);
+      this.watchingListService.addMovies(arr);
+    } else {
+      let arr = [id];
+      this.watchingListService.addMovies(arr);
+    }
   }
 
 

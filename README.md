@@ -1,6 +1,18 @@
-# U09AngularMovieApp
+# My watching list app
 
+This app was developed as part of my training as a web developer at Chas Academy using Angular 
+<img src="./src/assets/img/logo.png" alt="Angular" width="30"/><br>
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
+
+The app allows the user to:
+- Search by movies by title and actors by name
+- Click on a result to see more details about the movie or actor
+- Scroll through a list of current popular movies
+- Add movies to a watching list (data is stored in local storage)
+
+## Captures
+
+<img src="./src/assets/img/capture-1.png" alt="capture"/><br>
 
 ## Development server
 
