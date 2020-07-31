@@ -12,11 +12,15 @@ The app allows the user to:
 
 ## Capture
 
-<img src="./src/assets/img/capture-1.png" alt="capture"/><br>
+![u08-angular-movie-app web app_discover (1)](https://user-images.githubusercontent.com/42303378/89029485-dabd0b00-d32e-11ea-96da-180d6076a203.png)
+
+## Live Site
+
+Visit https://u08-angular-movie-app.web.app/ for a live version of the site.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm install` to install dependencies and then `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
